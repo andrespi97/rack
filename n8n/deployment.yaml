@@ -21,3 +21,10 @@ spec:
         name: n8n
         ports:
           - containerPort: 5678 
+        volumeMounts:
+          - mountPath: /home/node/.n8n
+            name: n8n-data
+      volumes:
+        - name: n8n-data
+          persistentVolumeClaim:
+            claimName: n8n-data
