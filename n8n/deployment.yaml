@@ -17,10 +17,10 @@ spec:
         app: n8n
     spec:
       containers:
-      - image: docker.n8n.io/n8nio/n8n
+      - image: n8nio/n8n:1.111.0
         name: n8n
         ports:
-          - containerPort: 5678 
+          - containerPort: 5678
         volumeMounts:
           - mountPath: /home/node/.n8n
             name: n8n-data
