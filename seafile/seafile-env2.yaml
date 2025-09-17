@@ -8,25 +8,24 @@ data:
   TIME_ZONE: "UTC"
   SEAFILE_LOG_TO_STDOUT: "true"
   SITE_ROOT: "/"
-  SEAFILE_SERVER_HOSTNAME: "192.168.1.135"
+  SEAFILE_SERVER_HOSTNAME: "seafile.example.com"
   SEAFILE_SERVER_PROTOCOL: "http"
 
-  CLUSTER_INIT_MODE: "true"
 
   # for database
-  # SEAFILE_MYSQL_DB_HOST: "<your MySQL host>"
+  SEAFILE_MYSQL_DB_HOST: "<your MySQL host>"
   SEAFILE_MYSQL_DB_PORT: "3306"
-  # SEAFILE_MYSQL_DB_USER: "seafile"
+  SEAFILE_MYSQL_DB_USER: "seafile"
   SEAFILE_MYSQL_DB_CCNET_DB_NAME: "ccnet_db"
   SEAFILE_MYSQL_DB_SEAFILE_DB_NAME: "seafile_db"
   SEAFILE_MYSQL_DB_SEAHUB_DB_NAME: "seahub_db"
 
   # for cached
-  CACHE_PROVIDER: "memcached" # or "redis"
+  CACHE_PROVIDER: "redis" # or "memcached"
 
   ## for redis
-  # REDIS_HOST: "<your redis host>"
-  # REDIS_PORT: "6379"
+  REDIS_HOST: "<your redis host>"
+  REDIS_PORT: "6379"
 
   ## for memcached
   MEMCACHED_HOST: "<your memcached host>"
@@ -49,4 +48,4 @@ data:
 
   # Init
   ## for Seafile admin
-  # INIT_SEAFILE_ADMIN_EMAIL: "<Seafile admin's email>"
+  INIT_SEAFILE_ADMIN_EMAIL: "<Seafile admin's email>"

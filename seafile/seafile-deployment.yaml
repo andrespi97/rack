@@ -23,11 +23,11 @@ spec:
                 name: seafile-secret
           volumeMounts:
             - name: seafile-data
-              mountPath: /shared
+              mountPath: /opt/seafile-data
       volumes:
         - name: seafile-data
           persistentVolumeClaim:
             claimName: seafile-data
       restartPolicy: Always
-      imagePullSecrets:
-        - name: regcred
+#      imagePullSecrets:
+#        - name: regcred
