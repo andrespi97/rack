@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: seafile-ingress
+  namespace: seafile
+spec:
+  # Le decimos que use el Ingress Controller Traefik que viene con Rancher Desktop
+  ingressClassName: traefik
+  rules:
+  - host: "seafile.local"
+    http:
+      paths:
+      # Ruta para el servidor de archivos (subidas/descargas)
+      # - path: /seafhttp
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: seafile
+      #       port:
+      #         number: 8082 # <--- Apunta al puerto del fileserver
+
+      # Ruta para todo lo demás (la página web)
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: seafile
+            port:
+              number: 8000 # <--- Apunta al puerto de Seahub

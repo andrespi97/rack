@@ -8,10 +8,15 @@ data:
   TIME_ZONE: "UTC"
   SEAFILE_LOG_TO_STDOUT: "true"
   SITE_ROOT: "/"
-  SEAFILE_SERVER_HOSTNAME: "192.168.1.135"
+  SEAFILE_SERVER_HOSTNAME: "seafile.local"
   SEAFILE_SERVER_PROTOCOL: "http"
 
-  CLUSTER_INIT_MODE: "true"
+
+
+  # CLUSTER_INIT_MODE: "true"
+  # CLUSTER_MODE: "backend"
+  # FILE_SERVER_ROOT: "192.168.1.147:8989"
+  
 
   # for database
   # SEAFILE_MYSQL_DB_HOST: "<your MySQL host>"

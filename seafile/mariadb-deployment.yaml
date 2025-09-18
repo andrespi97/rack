@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment # what to create?
 metadata:
   name: mariadb-deployment
+  namespace: seafile
 spec: # specification for deployment resource
   replicas: 1 # how many replicas of pods we want to create
   selector:

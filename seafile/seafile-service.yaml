@@ -8,6 +8,12 @@ spec:
     app: seafile
   type: ClusterIP
   ports:
-    - protocol: TCP
+    - name: http-seahub  
+      protocol: TCP
       port: 8000
-      targetPort: 8000
+      targetPort: 80
+    # - name: http-fileserver
+    #   protocol: TCP
+    #   port: 8082
+    #   targetPort: 8082
+    
