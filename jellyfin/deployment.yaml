@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jellyfin
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+      - image: jellyfin/jellyfin
+        name: jellyfin
+        volumeMounts:
+        # Configuración persistente de Jellyfin
+        - name: config
+          mountPath: /config
+        # Cache de metadatos e imágenes
+        - name: cache
+          mountPath: /cache
+        # Biblioteca de medios principal
+        - name: media
+          mountPath: /media
+        # Biblioteca de medios adicional
+        - name: media2
+          mountPath: /media2
+        # Directorio temporal para el contenedor
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        env:
+        - name: JELLYFIN_PublishedServerUrl
+          value: "http://jellyfin.local"
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: jellyfin-config-pvc
+      - name: cache
+        persistentVolumeClaim:
+          claimName: jellyfin-cache-pvc
+      - name: media
+        persistentVolumeClaim:
+          claimName: jellyfin-media-pvc
+      - name: media2
+        persistentVolumeClaim:
+          claimName: jellyfin-media2-pvc
+      - name: tmp-volume
+        emptyDir: {}
