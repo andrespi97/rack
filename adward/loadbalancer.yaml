@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: adguard-home-loadbalancer
-  namespace: metallb-system
+  namespace: adguard
 spec:
   type: LoadBalancer
   # OPCIONAL: Pide la primera IP del rango definido en el pool (ej. 192.168.1.240)
