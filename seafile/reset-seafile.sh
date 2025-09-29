@@ -40,6 +40,7 @@ echo "✅ Base de datos lista."
 echo "🚀 Desplegando la aplicación Seafile..."
 kubectl apply -f seafile-deployment.yaml
 kubectl apply -f seafile-service.yaml
+kubectl apply -f seafile-ingress.yaml
 
 echo "⏳ Esperando a que Seafile esté listo..."
 kubectl wait --for=condition=available --timeout=300s deployment/seafile -n $NAMESPACE
