@@ -23,7 +23,7 @@ spec:
                 name: seafile-secret
           volumeMounts:
             - name: seafile-data
-              mountPath: /opt/seafile-data
+              mountPath: /shared
       volumes:
         - name: seafile-data
           persistentVolumeClaim:
