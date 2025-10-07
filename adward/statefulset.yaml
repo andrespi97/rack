@@ -28,16 +28,26 @@ spec:
       - name: adguard-home
         image: adguard/adguardhome:latest
         ports:
-        - containerPort: 53
-          name: dns
-          hostPort: 53  # Enlaza el puerto del nodo con el del pod
-          protocol: UDP
+#        - containerPort: 53
+#          name: dns
+#          hostPort: 53  # Enlaza el puerto del nodo con el del pod
+#          protocol: UDP
         - containerPort: 3000
           name: http-initial
+          protocol: TCP
+#        - containerPort: 80
+        - containerPort: 53
+          name: dns
+          protocol: UDP
+        - containerPort: 53
+          name: dns-tcp
+          protocol: TCP
         - containerPort: 80
           name: http
-          hostPort: 5380 # Bind the node's port to the pod for API/UI
           protocol: TCP
+#          name: http
+#          hostPort: 5380 # Bind the node's port to the pod for API/UI
+#          protocol: TCP
         volumeMounts:
         - name: adguard-data
           mountPath: /opt/adguardhome/work/ # AdGuard Runtime data
