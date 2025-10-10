@@ -45,27 +45,27 @@ spec:
           mountPath: /opt/adguardhome/work/ # AdGuard Runtime data
         - name: adguard-config
           mountPath: /opt/adguardhome/conf/ # AdGuard configuration
-  volumeClaimTemplates: []
-  # - metadata:
-  #     name: adguard-data
-  #   spec:
-  #     accessModes: [ "ReadWriteOnce" ]
-  #     resources:
-  #       requests:
-  #         storage: 1Gi
-  #     storageClassName: "local-storage"
-  # - metadata:
-  #     name: adguard-config
-  #   spec:
-  #     accessModes: [ "ReadWriteOnce" ]
-  #     resources:
-  #       requests:
-  #         storage: 1Gi
-  #     storageClassName: "local-storage"
-  volumes:
-    - name: adguard-data
-      persistentVolumeClaim:
-        claimName: adguard-pvc
-    - name: adguard-config
-      persistentVolumeClaim:
-        claimName: adguard-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: adguard-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: "local-storage"
+  - metadata:
+      name: adguard-config
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: "local-storage"
+  # volumes:
+  #   - name: adguard-data
+  #     persistentVolumeClaim:
+  #       claimName: adguard-pvc
+  #   - name: adguard-config
+  #     persistentVolumeClaim:
+  #       claimName: adguard-pvc
