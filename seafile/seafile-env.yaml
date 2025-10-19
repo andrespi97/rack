@@ -8,7 +8,7 @@ data:
   TIME_ZONE: "UTC"
   SEAFILE_LOG_TO_STDOUT: "true"
   SITE_ROOT: "/"
-  SEAFILE_SERVER_HOSTNAME: "seafile.local"
+  SEAFILE_SERVER_HOSTNAME: "seafile.homelab"
   SEAFILE_SERVER_PROTOCOL: "http"
 
 
