@@ -7,7 +7,7 @@ spec:
   # Le decimos que use el Ingress Controller Traefik que viene con Rancher Desktop
   ingressClassName: traefik
   rules:
-  - host: "seafile.local"
+  - host: "seafile.homelab"
     http:
       paths:
       # Ruta para el servidor de archivos (subidas/descargas)
