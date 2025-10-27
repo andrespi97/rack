@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: homarr.local
+  - host: homarr.homelab
     http:
       paths:
       - path: /
