@@ -4,7 +4,7 @@ metadata:
   name: mariadb-data # Un nombre para la petición de almacenamiento
   namespace: seafile
 spec:
-  storageClassName: local-path # O el que estés usando
+  storageClassName: local-path-prod # O el que estés usando
   accessModes:
     - ReadWriteOnce # El volumen solo puede ser usado por un pod a la vez
   resources:

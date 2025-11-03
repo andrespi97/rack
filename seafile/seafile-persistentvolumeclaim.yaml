@@ -4,7 +4,7 @@ metadata:
   name: seafile-data
   namespace: seafile
 spec:
-  storageClassName: local-path
+  storageClassName: local-path-prod
   accessModes:
     - ReadWriteOnce
   resources:

@@ -53,7 +53,7 @@ spec:
       resources:
         requests:
           storage: 1Gi
-      storageClassName: "local-storage"
+      storageClassName: "local-path-prod"
   - metadata:
       name: adguard-config
     spec:
@@ -61,7 +61,7 @@ spec:
       resources:
         requests:
           storage: 1Gi
-      storageClassName: "local-storage"
+      storageClassName: "local-path-prod"
   # volumes:
   #   - name: adguard-data
   #     persistentVolumeClaim:
