@@ -19,6 +19,23 @@ spec:
       labels:
         app: homer
     spec:
+      initContainers:
+        - name: init-theme
+          image: alpine/git
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "🌀 Clonando tema Homer..."
+              git clone --depth 1 https://github.com/lammersbjorn/homer-theme.git /tmp/theme
+              echo "🧹 Limpiando contenido previo..."
+              rm -rf /theme/*
+              echo "🎨 Copiando tema a volumen..."
+              cp -r /tmp/theme/assets/* /theme/
+              echo "✅ Tema aplicado."
+          volumeMounts:
+            - name: homer-data
+              mountPath: /theme
       containers:
         - name: homer
           image: b4bz/homer
