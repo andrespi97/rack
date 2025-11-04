@@ -28,10 +28,12 @@ spec:
             - |
               echo "🌀 Clonando tema Homer..."
               git clone --depth 1 https://github.com/lammersbjorn/homer-theme.git /tmp/theme
-              echo "🧹 Limpiando contenido previo..."
+              echo "🧹 Limpiando volumen de tema..."
               rm -rf /theme/*
               echo "🎨 Copiando tema a volumen..."
               cp -r /tmp/theme/assets/* /theme/
+              echo "🔧 Ajustando permisos al usuario lighttpd..."
+              chown -R 100:101 /theme
               echo "✅ Tema aplicado."
           volumeMounts:
             - name: homer-data
@@ -47,10 +49,17 @@ spec:
             env:
             - name: INIT_ASSETS
               value: 1
+          - name: homer-config
+            mountPath: /www/assets/config.yml
+            subPath: config.yml
+            readOnly: true
       volumes:
         - name: homer-data
           persistentVolumeClaim:
             claimName: homer-data-pvc
+        - name: homer-config
+          configMap:
+            name: homer-config
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
