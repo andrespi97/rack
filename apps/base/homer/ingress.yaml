@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homer-ingress
+  namespace: homer
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: homer.homelab
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: homer
+            port:
+              number: 8080
