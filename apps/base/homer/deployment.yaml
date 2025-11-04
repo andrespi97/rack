@@ -41,7 +41,7 @@ metadata:
   name: homer-data-pvc
   namespace: homer
 spec:
-  # storageClassName: local-path-prod
+  storageClassName: local-path-prod
   accessModes:
     - ReadWriteOnce
   resources:
