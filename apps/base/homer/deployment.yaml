@@ -31,7 +31,7 @@ spec:
             - name: INIT_ASSETS
               value: 1
       volumes:
-        - name: linkding-data
+        - name: homer-data
           persistentVolumeClaim:
             claimName: homer-data-pvc
 ---
