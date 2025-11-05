@@ -1,0 +1,37 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: monitoring-controller
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  retryInterval: 1m0s
+  timeout: 5m0s
+  path: ./monitoring/controllers/staging
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: monitoring-configs
+#   namespace: flux-system
+# spec:
+#   interval: 1m0s
+#   retryInterval: 1m0s
+#   timeout: 5m0s
+#   path: ./monitoring/configs/staging
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   decryption:
+#     provider: sops
+#     secretRef:
+#       name: sops-age
