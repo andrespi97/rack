@@ -33,6 +33,7 @@ spec:
       adminPassword: mischa
       ingress:
         enable: true
+        ingressClassName: traefik
         hosts:
           - grafana.homelab
 
