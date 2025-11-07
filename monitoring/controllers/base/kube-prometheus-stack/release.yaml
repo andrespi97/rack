@@ -32,7 +32,7 @@ spec:
     grafana:
       adminPassword: sito
       ingress:
-        enable: true
+        enabled: true
         ingressClassName: traefik
         hosts:
           - grafana.homelab
