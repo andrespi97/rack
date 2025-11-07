@@ -30,10 +30,13 @@ spec:
           kind: PrometheusRule
   values:
     grafana:
-      adminPassword: mischa
+      adminPassword: sito
       ingress:
         enable: true
         ingressClassName: traefik
         hosts:
           - grafana.homelab
-
+        tls:
+          - secretName: grafana-tls-secret
+            hosts:
+              - grafana.homelab
