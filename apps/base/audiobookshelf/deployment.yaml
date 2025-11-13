@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homer
+  labels:
+    app.kubernetes.io/component: monitoring
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homer
+  template:
+    metadata:
+      labels:
+        app: homer
+    spec:
+      initContainers:
+        - name: init-theme
+          image: alpine/git
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "🌀 Clonando tema Homer..."
+              git clone --depth 1 https://github.com/lammersbjorn/homer-theme.git /tmp/theme
+              echo "🧹 Limpiando volumen de tema..."
+              rm -rf /theme/*
+              echo "🎨 Copiando tema a volumen..."
+              cp -r /tmp/theme/assets/* /theme/
+              echo "🔧 Ajustando permisos al usuario lighttpd..."
+              chown -R 100:101 /theme
+              echo "✅ Tema aplicado."
+          volumeMounts:
+            - name: homer-data
+              mountPath: /theme
+      containers:
+        - name: homer
+          image: b4bz/homer
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+          - name: homer-data
+            mountPath: /www/assets
+            env:
+            - name: INIT_ASSETS
+              value: 1
+          - name: homer-config
+            mountPath: /www/assets/config.yml
+            subPath: config.yml
+            readOnly: true
+      volumes:
+        - name: homer-data
+          persistentVolumeClaim:
+            claimName: homer-data-pvc
+        - name: homer-config
+          configMap:
+            name: homer-config
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: homer-data-pvc
+  namespace: homer
+spec:
+  storageClassName: local-path-prod
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
