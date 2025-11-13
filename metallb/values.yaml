@@ -204,7 +204,7 @@ chart:
         image:
           pullPolicy: null
           repository: quay.io/frrouting/frr
-          tag: 9.1.0
+          tag: 9.1.3
         metricsPort: 7473
         resources: {}
       frrMetrics:
