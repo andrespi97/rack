@@ -39,38 +39,38 @@ spec:
               configMapKeyRef:
                 name: audiobookshelf-configmap
                 key: PORT
-          # volumeMounts:
-#           - name: audiobookshelf-audiobooks
-#             mountPath: /audiobooks
-#           - name: audiobookshelf-podcasts
-#             mountPath: /podcasts
-#           - name: audiobookshelf-config
-#             mountPath: /config
-#           - name: audiobookshelf-metadata
-#             mountPath: /metadata
-#       volumes:
-#         - name: audiobookshelf-audiobooks
-#           persistentVolumeClaim:
-#             claimName: audiobookshelf-pvc
-#         - name: audiobookshelf-podcasts
-#           persistentVolumeClaim:
-#             claimName: audiobookshelf-pvc
-#         - name: audiobookshelf-config
-#           persistentVolumeClaim:
-#             claimName: audiobookshelf-pvc
-#         - name: audiobookshelf-metadata
-#           persistentVolumeClaim:
-#             claimName: audiobookshelf-pvc
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: audiobookshelf-pvc
-#   namespace: audiobookshelf
-# spec:
-#   storageClassName: local-path-prod
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 1Gi
+          volumeMounts:
+          - name: audiobookshelf-audiobooks
+            mountPath: /audiobooks
+          - name: audiobookshelf-podcasts
+            mountPath: /podcasts
+          - name: audiobookshelf-config
+            mountPath: /config
+          - name: audiobookshelf-metadata
+            mountPath: /metadata
+      volumes:
+        - name: audiobookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audiobookshelf-pvc
+        - name: audiobookshelf-podcasts
+          persistentVolumeClaim:
+            claimName: audiobookshelf-pvc
+        - name: audiobookshelf-config
+          persistentVolumeClaim:
+            claimName: audiobookshelf-pvc
+        - name: audiobookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audiobookshelf-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audiobookshelf-pvc
+  namespace: audiobookshelf
+spec:
+  storageClassName: local-path-prod
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
