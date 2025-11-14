@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: audiobookshelf
+  labels:
+    app.kubernetes.io/component: monitoring
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audiobookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audiobookshelf
+  template:
+    metadata:
+      labels:
+        app: audiobookshelf
+    spec:
+      # securityContext:
+      #   fsGroup: 33
+      #   runAsUser: 33
+      #   runAsGroup: 33
+      containers:
+        - name: audiobookshelf
+          image: advplyr/audiobookshelf:latest
+          ports:
+            - containerPort: 13378
+          env:
+          - name: TZ
+            valueFrom:
+              configMapKeyRef:
+                name: audiobookshelf-configmap
+                key: TZ
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: audiobookshelf-configmap
+                key: PORT
+          # volumeMounts:
+#           - name: audiobookshelf-audiobooks
+#             mountPath: /audiobooks
+#           - name: audiobookshelf-podcasts
+#             mountPath: /podcasts
+#           - name: audiobookshelf-config
+#             mountPath: /config
+#           - name: audiobookshelf-metadata
+#             mountPath: /metadata
+#       volumes:
+#         - name: audiobookshelf-audiobooks
+#           persistentVolumeClaim:
+#             claimName: audiobookshelf-pvc
+#         - name: audiobookshelf-podcasts
+#           persistentVolumeClaim:
+#             claimName: audiobookshelf-pvc
+#         - name: audiobookshelf-config
+#           persistentVolumeClaim:
+#             claimName: audiobookshelf-pvc
+#         - name: audiobookshelf-metadata
+#           persistentVolumeClaim:
+#             claimName: audiobookshelf-pvc
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: audiobookshelf-pvc
+#   namespace: audiobookshelf
+# spec:
+#   storageClassName: local-path-prod
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 1Gi
