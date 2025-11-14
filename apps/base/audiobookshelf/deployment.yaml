@@ -68,7 +68,7 @@ metadata:
   name: audiobookshelf-pvc
   namespace: audiobookshelf
 spec:
-  storageClassName: local-path-prod
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
