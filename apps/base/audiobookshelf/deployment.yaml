@@ -27,7 +27,11 @@ spec:
         - name: audiobookshelf
           image: advplyr/audiobookshelf:latest
           ports:
-            - containerPort: 13378
+            - containerPort:
+                valueFrom:
+                  configMapKeyRef:
+                    name: audiobookshelf-configmap
+                    key: PORT
           env:
           - name: TZ
             valueFrom:
