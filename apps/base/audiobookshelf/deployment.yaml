@@ -51,22 +51,33 @@ spec:
       volumes:
         - name: audiobookshelf-audiobooks
           persistentVolumeClaim:
-            claimName: audiobookshelf-pvc
+            claimName: audiobookshelf-audiobooks
         - name: audiobookshelf-podcasts
           persistentVolumeClaim:
-            claimName: audiobookshelf-pvc
+            claimName: audiobookshelf-podcasts
         - name: audiobookshelf-config
           persistentVolumeClaim:
-            claimName: audiobookshelf-pvc
+            claimName: audiobookshelf-config
         - name: audiobookshelf-metadata
           persistentVolumeClaim:
-            claimName: audiobookshelf-pvc
+            claimName: audiobookshelf-metadata
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: audiobookshelf-pvc
-  namespace: audiobookshelf
+  name: audiobookshelf-audiobooks
+spec:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audiobookshelf-podcasts
 spec:
   storageClassName: local-path
   accessModes:
@@ -74,3 +85,27 @@ spec:
   resources:
     requests:
       storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audiobookshelf-config
+spec:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audiobookshelf-metadata
+spec:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
