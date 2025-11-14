@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homer-ingress
-  namespace: homer
+  name: audiobookshelf-ingress
+  namespace: audiobookshelf
 spec:
   ingressClassName: traefik
   rules:
-  - host: homer.homelab
+  - host: audiobookshelf.homelab
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: homer
+            name: audiobookshelf
             port:
-              number: 8080
+              number: 3005
