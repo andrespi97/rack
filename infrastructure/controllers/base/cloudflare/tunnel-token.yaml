@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
     name: tunnel-token
+    namespace: audiobookshelf
 stringData:
     token: ENC[AES256_GCM,data:L6IOxEjb6/gTy+C+NuedLu9UZzz/VC6JL7rVkZJ3af3raJzAQ0vXJ5TURLwfERzrrhpbmmuwK6qfFWjy5TjbiV6VsRn2Eo5HNtM2tCaBqZX9e1x8bMjFoKYgPrCEz51wUGCxGqmYzKImq+CuZcg5Swrz4pyA4odTgd8qsG5f57NGEIywIN/Sj+0CebdBa0JSyuC34PixebHS5QeWK+1OOqvi5KA3s4lVHIxan924GcTVDeFjlzSTvQ==,iv:qA9jHyZ9+JsffO115xGplrYTnNzZyqm7jaCpMssYxHE=,tag:v9AC4MTLADfTroULzmkrgw==,type:str]
 sops:
