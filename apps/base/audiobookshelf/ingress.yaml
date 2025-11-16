@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: audiobookshelf-ingress
   namespace: audiobookshelf
+  annotations:
+    kubernetes.io/ingress.class: "cloudflare"
 spec:
   ingressClassName: traefik
   rules:
