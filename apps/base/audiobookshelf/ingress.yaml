@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: audiobookshelf.homelab
+  - host: audiobookshelf.andreslab.online
     http:
       paths:
       - path: /
