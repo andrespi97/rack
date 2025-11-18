@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adguard-sync-config
+  namespace: adguard
+data:
+  LOG_LEVEL: "info"
+  ORIGIN_URL: "http://<NODE1IP>:5380"
+  ORIGIN_USERNAME: "yourUser"
+  ORIGIN_PASSWORD: "yourPass"
+  REPLICA1_URL: "http://<NODE2IP>:5380"
+  REPLICA1_USERNAME: "yourUser"
+  REPLICA1_PASSWORD: "yourPass"
+  CRON: "*/5 * * * *" # run every 5 minutes
+  RUN_ON_START: "true"
+  API_PORT: "5380"
