@@ -1,1 +1,4 @@
 .DS_Store
+grafana-tls-secret.yaml
+tls.crt
+tls.key
