@@ -112,7 +112,7 @@ data:
         icon: "fas fa-bookmark"
         items:
           - name: "Linkding"
-            logo: "raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/linkding.png"
+            logo: "https://raw.githubusercontent.com/lllllllillllllillll/Dashboard-Icons/main/png/linkding.png"
             subtitle: "Gestor de marcadores tipo Pinboard"
             tag: "bookmarks"
             tagstyle: "is-link"
@@ -123,7 +123,7 @@ data:
         icon: "fas fa-shield-alt"
         items:
           - name: "AdGuard Home"
-            logo: "https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/adguardhome.png"
+            logo: "https://raw.githubusercontent.com/lllllllillllllillll/Dashboard-Icons/main/png/adguard.png"
             subtitle: "Bloqueo de publicidad y DNS seguro"
             tag: "dns"
             tagstyle: "is-danger"
