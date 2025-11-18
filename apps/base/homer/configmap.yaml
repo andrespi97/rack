@@ -10,8 +10,8 @@ data:
     logo: "fa-solid fa-house"
 
     header: true
-    footer: '<p>Theme made with <span class="has-text-danger">❤️</span> by <a href="https://github.com/WalkxCode">Walkx</a></p>
-    </br> Menu made by Andrés <span class="has-text-danger">🐵</span>'
+    footer: '<p>Theme made with <span class="has-text-danger">❤️</span> by <a href="https://github.com/WalkxCode">Walkx</a></p></br> Menu made by Andrés <span class="has-text-danger">🐵</span>'
+
 
     stylesheet:
       - "assets/custom.css"
