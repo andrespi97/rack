@@ -7,10 +7,11 @@ data:
   config.yml: |
     title: "Andrés Homelab"
     subtitle: "DevOps | Selfhosted | Homelab"
-    logo: "logo.png"
+    logo: "fa-solid fa-house"
 
-    header: false
-    footer: '<p>Theme made with <span class="has-text-danger">❤️</span> by <a href="https://github.com/WalkxCode">Walkx</a></p>'
+    header: true
+    footer: '<p>Theme made with <span class="has-text-danger">❤️</span> by <a href="https://github.com/WalkxCode">Walkx</a></p>
+    </br> Menu made by Andrés <span class="has-text-danger">🐵</span>'
 
     stylesheet:
       - "assets/custom.css"
