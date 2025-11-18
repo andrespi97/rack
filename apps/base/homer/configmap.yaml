@@ -7,7 +7,7 @@ data:
   config.yml: |
     title: "Andrés Homelab"
     subtitle: "DevOps | Selfhosted | Homelab"
-    logo: "https://github.com/bastienwirtz/homer/blob/main/public/logo.png"
+    logo: "https://raw.githubusercontent.com/bastienwirtz/homer/refs/heads/main/public/logo.png"
 
     header: true
     footer: '<p>Theme made with <span class="has-text-danger">❤️</span> by <a href="https://github.com/WalkxCode">Walkx</a></p></br> Menu made by Andrés <span class="has-text-danger">🐵</span>'
