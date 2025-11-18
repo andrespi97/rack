@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard-sync-deployment
+  namespace: adguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard-sync
+  template:
+    metadata:
+      labels:
+        app: adguard-sync
+    spec:
+      containers:
+      - name: adguard-sync
+        image: ghcr.io/bakito/adguardhome-sync
+        envFrom:
+        - configMapRef:
+            name: adguard-sync-config
+        ports:
+        - containerPort: 8080
