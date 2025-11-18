@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-data # Un nombre para la petición de almacenamiento
+  namespace: seafile
+spec:
+  storageClassName: local-path-prod # O el que estés usando
+  accessModes:
+    - ReadWriteOnce # El volumen solo puede ser usado por un pod a la vez
+  resources:
+    requests:
+      storage: 5Gi # El tamaño del "disco duro" para la base de datos
+
