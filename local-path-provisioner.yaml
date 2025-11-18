@@ -133,6 +133,10 @@ data:
             {
                     "node":"DEFAULT_PATH_FOR_NON_LISTED_NODES",
                     "paths":["/mnt/kube-data"]
+            },
+            {
+                    "node":"fogar",
+                    "paths":["/mnt/kube-data"]
             }
             ]
     }

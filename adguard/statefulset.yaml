@@ -52,16 +52,16 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
-      storageClassName: "local-path-prod"
+          storage: 500Mi
+      storageClassName: "local-path"
   - metadata:
       name: adguard-config
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
-      storageClassName: "local-path-prod"
+          storage: 500Mi
+      storageClassName: "local-path"
   # volumes:
   #   - name: adguard-data
   #     persistentVolumeClaim:
