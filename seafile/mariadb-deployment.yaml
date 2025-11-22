@@ -15,7 +15,7 @@ spec: # specification for deployment resource
     spec: # specification for pods
       containers: # we can have one or more containers
       - name: mariadb
-        image: mariadb:11.8.3
+        image: mariadb:12.1.2
         ports:
         - containerPort: 3306
         env:
