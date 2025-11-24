@@ -17,7 +17,7 @@ spec:
         app: n8n
     spec:
       containers:
-      - image: n8nio/n8n:1.111.0
+      - image: n8nio/n8n:1.122.1
         name: n8n
         ports:
           - containerPort: 5678
