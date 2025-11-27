@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tubearchivist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tubearchivist
+  template:
+    metadata:
+      labels:
+        app: tubearchivist
+    spec:
+      containers:
+        - name: tubearchivist
+          image: bbilly1/tubearchivist-es
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: tubearchivist-configmap
+          volumeMounts:
+            - name: tubearchivist-data
+              mountPath: /youtube
+            - name: tubearchivist-cache
+              mountPath: /cache
+          securityContext:
+            allowPrivilegeEscalation: false
+      volumes:
+        - name: tubearchivist-data
+          persistentVolumeClaim:
+            claimName: tubearchivist-data-pvc
+        - name: tubearchivist-data
+          persistentVolumeClaim:
+            claimName: tubearchivist-cache-pvc
