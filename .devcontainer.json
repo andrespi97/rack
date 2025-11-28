@@ -1,0 +1,36 @@
+{
+    // Simple Debian-based devcontainer using Microsoft's base image (includes a non-root 'vscode' user)
+    "name": "Debian (stable) Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    // Recommended VS Code extensions to install in the container
+    "features": {
+        "ghrc.devcontainers-contrib/feaatures/neovim-homebrew:1": {}
+    },
+    // "customizations": {
+    //     "vscode": {
+    //         "extensions": [
+    //             "ms-vscode.cpptools",
+    //             "ms-python.python",
+    //             "esbenp.prettier-vscode"
+    //         ]
+    //     }
+    // },
+    // // Commands run after the container is created (install common tooling)
+    // "postCreateCommand": "export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y --no-install-recommends build-essential git curl ca-certificates sudo && rm -rf /var/lib/apt/lists/*",
+    // // Use the 'vscode' user provided by the base image
+    // "remoteUser": "vscode",
+    // // Forward any ports the app might use (empty by default)
+    // "forwardPorts": [],
+    // // Workspace folder inside the container
+    // "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    // // Keep the container lightweight; optionally add mounts or settings as needed
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "/bin/bash"
+            }
+        }
+    }
+}
