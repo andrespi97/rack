@@ -7,7 +7,7 @@
 # @schema
 # -- namespaceOverride allows to override the destination namespace for Cilium resources.
 # This property allows to use Cilium as part of an Umbrella Chart with different targets.
-namespaceOverride: ""
+namespaceOverride: "kube-system"
 # @schema
 # type: [null, object]
 # @schema
@@ -59,7 +59,7 @@ imagePullSecrets: []
 iptablesRandomFully: false
 # -- (string) Kubernetes config path
 # @default -- `"~/.kube/config"`
-kubeConfigPath: ""
+kubeConfigPath: "~/.kube/config"
 # -- Configure the Kubernetes service endpoint dynamically using a ConfigMap. Mutually exclusive with `k8sServiceHost`.
 k8sServiceHostRef:
   # @schema
@@ -476,7 +476,7 @@ l2podAnnouncements:
 # CiliumBGPPeeringPolicy CRDs.
 bgpControlPlane:
   # -- Enables the BGP control plane.
-  enabled: false
+  enabled: true
   # -- SecretsNamespace is the namespace which BGP support will retrieve secrets from.
   secretsNamespace:
     # -- Create secrets namespace for BGP secrets.
@@ -893,7 +893,7 @@ identityManagementMode: "agent"
 envoyConfig:
   # -- Enable CiliumEnvoyConfig CRD
   # CiliumEnvoyConfig CRD can also be implicitly enabled by other options.
-  enabled: false
+  enabled: true
   # -- SecretsNamespace is the namespace in which envoy SDS will retrieve secrets from.
   secretsNamespace:
     # -- Create secrets namespace for CiliumEnvoyConfig CRDs.
@@ -998,7 +998,7 @@ ingressController:
 gatewayAPI:
   # -- Enable support for Gateway API in cilium
   # This will automatically set enable-envoy-config as well.
-  enabled: false
+  enabled: true
   # -- Enable proxy protocol for all GatewayAPI listeners. Note that _only_ Proxy protocol traffic will be accepted once this is enabled.
   enableProxyProtocol: false
   # -- Enable Backend Protocol selection support (GEP-1911) for Gateway API via appProtocol.
@@ -2115,7 +2115,7 @@ readinessProbe:
 # @schema@
 # type: [string, boolean]
 # @schema@
-kubeProxyReplacement: "false"
+kubeProxyReplacement: "true"
 # -- healthz server bind address for the kube-proxy replacement.
 # To enable set the value to '0.0.0.0:10256' for all ipv4
 # addresses and this '[::]:10256' for all ipv6 addresses.
@@ -2258,7 +2258,7 @@ loadBalancer:
     # Applicable values:
     #   - envoy: Enable L7 load balancing via envoy proxy. This will automatically set enable-envoy-config as well.
     #   - disabled: Disable L7 load balancing by way of service annotation.
-    backend: disabled
+    backend: envoy
     # -- List of ports from service to be automatically redirected to above backend.
     # Any service exposing one of these ports will be automatically redirected.
     # Fine-grained control can be achieved by using the service annotation.
@@ -2858,7 +2858,7 @@ operator:
     pullPolicy: "IfNotPresent"
     suffix: ""
   # -- Number of replicas to run for the cilium-operator deployment
-  replicas: 2
+  replicas: 1
   # -- The priority class to use for cilium-operator
   priorityClassName: ""
   # -- DNS policy for Cilium operator pods.

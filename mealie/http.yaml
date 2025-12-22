@@ -5,10 +5,11 @@ metadata:
   namespace: mealie
 spec:
   parentRefs:
-  - name: homelab-gateway
-    namespace: networking
+  - name: my-gateway
+    namespace: default
+    sectionName: web-gw
   hostnames:
-  - "mealie.homelab"
+  - mealie.homelab
   rules:
   - matches:
     - path:
