@@ -46,6 +46,9 @@ spec:
   ingress:
   - from:
     - namespaceSelector: {}
+    ports:
+    - port: 8080
+      protocol: TCP
   podSelector: {}
   policyTypes:
   - Ingress
