@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: test-route
+  namespace: networking
+spec:
+  parentRefs:
+    - name: homelab-gateway
+  hostnames:
+    - "test.local"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: httpbin
+          port: 80
+          weight: 1

@@ -1,21 +1,23 @@
 namespaceOverride: "kube-system"
+
 kubeProxyReplacement: true
 
 operator:
   replicas: 1
 
 envoyConfig:
-  enabled: true
+  enabled: false
 
 ingressController:
   enabled: false
 
 gatewayAPI:
-  enabled: true
+  enabled: false
 
 loadBalancer:
   l7:
-    backend: envoy
+    backend: ""
+#    backend: envoy
 
 bgpControlPlane:
   enabled: true

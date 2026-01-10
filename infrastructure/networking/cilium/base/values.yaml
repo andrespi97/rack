@@ -1,0 +1,33 @@
+namespaceOverride: "kube-system"
+
+kubeProxyReplacement: true
+
+k8sServiceHost: 192.168.1.141
+k8sServicePort: 6443
+
+operator:
+  replicas: 1
+
+envoyConfig:
+  enabled: false
+
+ingressController:
+  enabled: false
+
+gatewayAPI:
+  enabled: false
+  serviceLB: false
+# loadBalancer:
+#   l7:
+#     backend: "envoy"
+
+bgpControlPlane:
+  enabled: false
+
+# ipv4:
+#   masquerade: true
+
+# externalIPs:
+#   enabled: true
+
+

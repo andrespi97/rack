@@ -1,0 +1,6 @@
+gatewayAPI:
+  enabled: true
+
+# loadBalancer:
+#   l7:
+#     backend: "envoy"

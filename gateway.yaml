@@ -1,17 +1,19 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: my-gateway
+  name: homelab-gateway
+  namespace: networking
+  annotations:
+    io.cilium.lb-service: "true"  # importante para Cilium
 spec:
-  addresses:
-  - type: IPAddress
-    value: 192.168.1.144
   gatewayClassName: cilium
   listeners:
-  - allowedRoutes:
-      namespaces:
-        from: All
-    name: web-gw
-    port: 80
-    protocol: HTTP
-
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+  addresses:
+    - type: IPAddress
+      value: 192.168.1.141
