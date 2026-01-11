@@ -1,0 +1,12 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "allow-ingress-to-hubble-ui-l7"
+spec:
+  description: "Permite acceso HTTP al Hubble UI desde el Ingress Controller"
+  endpointSelector:
+    matchLabels:
+      k8s-app: hubble-ui
+  ingress:
+  - fromEntities:
+    - ingress

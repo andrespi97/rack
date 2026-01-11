@@ -1,0 +1,14 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "allow-only-my-home-network"
+spec:
+  description: "Solo mi red local puede tocar el Ingress"
+  endpointSelector:
+    matchExpressions:
+    - key: reserved:ingress
+      operator: Exists
+  ingress:
+  - fromCIDRSet:
+    # Please update the CIDR to match your environment
+    - cidr: 192.168.1.0/24

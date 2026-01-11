@@ -9,25 +9,33 @@ operator:
   replicas: 1
 
 envoyConfig:
-  enabled: false
+  enabled: true
 
 ingressController:
-  enabled: false
+  enabled: true
+  loadbalancerMode: shared
+  default: true
+
+loadBalancer:
+  l7:
+    backend: "envoy"
 
 gatewayAPI:
   enabled: false
-  serviceLB: false
-# loadBalancer:
-#   l7:
-#     backend: "envoy"
+
+l2announcements:
+  enabled: true
 
 bgpControlPlane:
-  enabled: false
+  enabled: true
 
-# ipv4:
-#   masquerade: true
+ipv4:
+  enabled: true
+  masquerade: true
 
-# externalIPs:
-#   enabled: true
-
-
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true

@@ -4,12 +4,11 @@ metadata:
   name: homelab-l2-policy
   namespace: kube-system
 spec:
-  serviceSelector:
-    matchLabels:
-      cilium-lb-pool: blue-pool
+  # serviceSelector:
+  #   matchLabels:
+  #     cilium-lb-pool: blue-pool
   loadBalancerIPs: true
-  # Listado de IPs o rangos a anunciar
-  # Lista de interfaces de red por nodo o label
-  #interfaces:
-  #- eth0
+  externalIPs: true
+  interfaces:
+    - ^wlp2s0$
 

@@ -1,0 +1,47 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "hubble-infra-visibility"
+spec:
+  description: "Permite la comunicación interna de Hubble (UI -> Relay -> Peers)"
+  endpointSelector:
+    matchExpressions:
+      - key: k8s-app
+        operator: In
+        values:
+          - hubble-relay
+          - hubble-ui
+          - cilium-agent
+  ingress:
+    - fromEntities:
+        - cluster
+        - host
+  egress:
+    # 1. Permitir que Relay hable con los Peers (puerto 443 y 4244)
+    - toEntities:
+        - cluster
+        - host
+        - remote-node
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+            - port: "4244"
+              protocol: TCP
+    # 2. Permitir que la UI hable con el Relay
+    - toEndpoints:
+        - matchLabels:
+            k8s-app: hubble-relay
+      toPorts:
+        - ports:
+            - port: "4245"
+              protocol: TCP
+    # 3. Permitir DNS para resolver nombres internos
+    - toEndpoints:
+        - matchLabels:
+            "k8s:io.kubernetes.pod.namespace": kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP

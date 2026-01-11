@@ -1,0 +1,18 @@
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "default-deny-all"
+spec:
+  endpointSelector:
+    matchExpressions:
+    - key: io.kubernetes.pod.namespace
+      operator: NotIn
+      values: [kube-system] # No bloqueamos el sistema para no romper el clúster
+  egress:
+  - toEndpoints: # Solo permitimos DNS para que los pods no mueran
+    - matchLabels:
+        k8s-app: kube-dns
+        io.kubernetes.pod.namespace: kube-system
+    toPorts:
+    - ports: [{port: '53', protocol: UDP}]
+      rules: {dns: [{matchPattern: '*'}]}
