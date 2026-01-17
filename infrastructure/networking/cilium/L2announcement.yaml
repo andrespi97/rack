@@ -9,6 +9,12 @@ spec:
   #     cilium-lb-pool: blue-pool
   loadBalancerIPs: true
   externalIPs: true
+  nodeSelector:
+    matchExpressions:
+      - key: "kubernetes.io/os"
+        operator: In
+        values:
+          - linux
   interfaces:
     - ^wlp2s0$
 

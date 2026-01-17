@@ -1,6 +1,6 @@
 namespaceOverride: "kube-system"
 
-kubeProxyReplacement: "strict"
+kubeProxyReplacement: true
 
 k8sServiceHost: 192.168.1.141
 k8sServicePort: 6443
@@ -11,12 +11,21 @@ operator:
 envoyConfig:
   enabled: true
 
+routingMode: native
+autoDirectNodeRoutes: true
+ipv4NativeRoutingCIDR: "10.42.0.0/16"
+ipam:
+  mode: "cluster-pool"
+  operator:
+    clusterPoolIPv4PodCIDRList: ["10.42.0.0/16"]
+
 ingressController:
-  enabled: true
-  loadbalancerMode: "shared"
-  default: true
+  enabled: false
+  # loadbalancerMode: "shared"
+  # default: true
 
 loadBalancer:
+  mode: "dsr"
   l7:
     backend: "envoy"
 
