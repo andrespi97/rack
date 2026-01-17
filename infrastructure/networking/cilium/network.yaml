@@ -12,3 +12,4 @@ spec:
   - fromCIDRSet:
     # Please update the CIDR to match your environment
     - cidr: 192.168.1.0/24
+    - cidr: 172.17.0.0/16  # Rango interno de Docker/Nodos por si acaso

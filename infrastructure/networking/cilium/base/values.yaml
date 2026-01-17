@@ -1,6 +1,6 @@
 namespaceOverride: "kube-system"
 
-kubeProxyReplacement: true
+kubeProxyReplacement: "strict"
 
 k8sServiceHost: 192.168.1.141
 k8sServicePort: 6443
@@ -13,7 +13,7 @@ envoyConfig:
 
 ingressController:
   enabled: true
-  loadbalancerMode: shared
+  loadbalancerMode: "shared"
   default: true
 
 loadBalancer:
